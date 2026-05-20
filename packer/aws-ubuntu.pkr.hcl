@@ -28,4 +28,13 @@ build {
   sources = [
     "source.amazon-ebs.ubuntu"
   ]
+
+  provisioner "shell" {
+    inline = [
+      "echo Updating system...",
+      "sudo apt-get update -y",
+      "sudo apt-get upgrade -y",
+      "echo \"System updated successfuly\" > packer.log"
+    ]
+  }
 }
