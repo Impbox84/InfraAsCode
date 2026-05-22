@@ -1,0 +1,35 @@
+name: 'Terraform Deploy'
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  terraform:
+    name: 'Terraform'
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        role-to-assume: arn:aws:iam::862183343884:role/GitHubActionsRole
+        aws-region: eu-north-1
+
+    - name: Terraform Init
+      run: terraform -chdir=terraform/envs/prod init
+
+    - name: Terraform Plan
+      run: terraform -chdir=terraform/envs/prod plan
+
+    - name: Terraform Apply
+      if: github.ref == 'refs/head/main' && github.event_name == 'push'
+      run: terraform -chdir=terraform/envs/prod apply -auto-approve
