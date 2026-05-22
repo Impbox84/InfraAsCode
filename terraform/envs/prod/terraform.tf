@@ -7,4 +7,11 @@ terraform {
     }
 
     required_version = ">= 1.2"
+
+    backend "s3" {
+        bucket = "infraascode-project-states-bucket"
+        key = "prod/terraform.tfstate"
+        region = "eu-north-1"
+        use_lockfile = true
+    }
 }

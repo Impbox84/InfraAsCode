@@ -12,18 +12,3 @@ resource "aws_s3_bucket_versioning" "states_bucket_versioning" {
         status = "Enabled"
     }
 }
-
-resource "aws_dynamodb_table" "lock_versioning" {
-    name = "LockVersioning"
-    billing_mode = "PAY_PER_REQUEST"
-    hash_key = "LockID"
-
-    attribute {
-        name = "LockID"
-        type = "S"
-    }
-
-    tags = {
-        Name = "lock-versioning"
-    }
-}
