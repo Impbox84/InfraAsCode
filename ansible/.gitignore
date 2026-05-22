@@ -1,0 +1,8 @@
+# Fichiers de retry en cas d'échec d'un playbook
+*.retry
+
+# Logs Ansible
+ansible.log
+
+# Rôles externes ansible-galaxy
+roles/external/

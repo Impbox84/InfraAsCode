@@ -1,0 +1,9 @@
+# Fichiers de cache
+.packer/
+packer_cache/
+
+# Variables Packer contenant des secrets
+*.pkrvars.hcl
+
+# Fichiers de variables générés automatiquement ou manifests de build
+*manifest.json

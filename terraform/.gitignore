@@ -1,0 +1,25 @@
+# Dossier de cache local
+.terraform/
+.terraform.lock.hcl
+
+# Fichiers d'état
+*.tfstate
+*.tfstate.*
+
+# Fichiers de variables d'environnement
+*.tfvars
+*.tfvars.json
+*.secret
+
+# Fichiers de log de crash
+crash.log
+crash.*.log
+
+# Fichiers d'override de configuration
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Fichiers de plan d'exécution
+*.tfplan
